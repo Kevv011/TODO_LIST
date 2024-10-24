@@ -1,0 +1,15 @@
+.listform {
+    width:45% !important;
+}
+
+@media(max-width: 768px) {
+    .listform {
+        width: 80% !important;
+    }
+}
+
+@media(max-width: 576px) {
+    .listform {
+        width: 100% !important;
+    }
+}
