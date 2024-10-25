@@ -1,4 +1,4 @@
-import './App.css'
+import './assets/css/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';      //Importando Bootstrap
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; //Importando Bootstrap
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
