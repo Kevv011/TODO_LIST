@@ -1,12 +1,33 @@
-
+import { useEffect, useState } from 'react';
+import { getActivities } from '../firebase/activitiesService';
 
 export const List_View = () => {
-    return (
-        <section className="mb-5">
-            <div className="mt-5 mb-5">
-                <h1><strong>Mis actividades</strong></h1>
-                <h5>Tu sección de actividades programadas</h5>
+  const [activities, setActivities] = useState([]);
+
+  useEffect(() => {
+    const fetchActivities = async () => {
+      const activitiesData = await getActivities();
+      setActivities(activitiesData);
+    };
+    fetchActivities();
+  }, []);
+
+  return (
+    <div className="container mt-4">
+      <h2>Lista de Actividades</h2>
+      <div className="row">
+        {activities.map((activity) => (
+          <div className="col-md-4" key={activity.id}>
+            <div className="card mb-4">
+              <div className="card-body">
+                <h5 className="card-title">{activity.nombreActividad}</h5>
+                <h6 className="card-subtitle mb-2 text-muted">{activity.hora}</h6>
+                <p className="card-text">{activity.descripcion}</p>
+              </div>
             </div>
-        </section>
-    )
-} 
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};

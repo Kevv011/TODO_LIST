@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import { addActivity } from '../firebase/activitiesService';
 import '../assets/css/FormList.css';
 
 const ActivityForm = () => {
@@ -8,16 +9,15 @@ const ActivityForm = () => {
     formState: { errors },
   } = useForm();
 
-  // Función que se ejecuta al enviar el formulario
-  const onSubmit = (data) => {
-    console.log(data);
-    alert('Formulario enviado con éxito');
+  // Función para enviar los datos a Firebase
+  const onSubmit = async (data) => {
+    await addActivity(data); // Enviar los datos a Firebase
+    alert('Actividad agregada con éxito');
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="listform container mt-4">
       <div className="mb-3">
-        {/* Campo para Nombre de la actividad */}
         <label htmlFor="nombreActividad" className="form-label">
           Nombre de actividad
         </label>
@@ -40,7 +40,6 @@ const ActivityForm = () => {
       </div>
 
       <div className="mb-3">
-        {/* Campo para Hora */}
         <label htmlFor="hora" className="form-label">
           Hora
         </label>
@@ -60,7 +59,6 @@ const ActivityForm = () => {
       </div>
 
       <div className="mb-3">
-        {/* Campo para Descripción */}
         <label htmlFor="descripcion" className="form-label">
           Descripción
         </label>
@@ -83,7 +81,6 @@ const ActivityForm = () => {
         )}
       </div>
 
-      {/* Botón para enviar el formulario */}
       <button type="submit" className="btn btn-primary">
         Enviar
       </button>

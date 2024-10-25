@@ -1,4 +1,4 @@
-import HomeList from '../components/FormList';
+import ActivityForm from '../components/ActivityForm';
 
 export const Home_List = () => {
     return (
@@ -7,7 +7,7 @@ export const Home_List = () => {
                 <h1><strong>Agregar una actividad</strong></h1>
                 <h5>Especifica los detalles de tu actividad que quieres programar</h5>
             </div>
-            <HomeList />
+            <ActivityForm />
         </section>
     )
 }
